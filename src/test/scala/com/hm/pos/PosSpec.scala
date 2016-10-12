@@ -3,7 +3,6 @@ package com.hm.pos
 import org.scalatest.{FeatureSpec, GivenWhenThen, Matchers}
 
 class PosSpec extends FeatureSpec with GivenWhenThen with Matchers {
-
   feature("Scan list of items") {
     scenario("POS could scan all valid items") {
       Given("list of items")
@@ -39,9 +38,13 @@ class PosSpec extends FeatureSpec with GivenWhenThen with Matchers {
       val cartPage3 = POS.scan(items3)
 
       Then("POS should give price of purchased items")
-      cartPage1.cart.price shouldBe 2.05
-      cartPage2.cart.price shouldBe 1.95
-      cartPage3.cart.price shouldBe 2.80
+      //      cartPage1.cart.price shouldBe 2.05
+      //      cartPage2.cart.price shouldBe 1.95
+      //      cartPage3.cart.price shouldBe 2.80
+
+      cartPage1.cart.price shouldBe 1.45
+      cartPage2.cart.price shouldBe 1.10
+      cartPage3.cart.price shouldBe 1.95
     }
   }
 
@@ -55,7 +58,8 @@ class PosSpec extends FeatureSpec with GivenWhenThen with Matchers {
       val cartPage = POS.scan(validItems)
 
       Then("POS should display items purchased")
-      val resultPage = "[apple,apple,orange,apple] => £2.05"
+      //val resultPage = "[apple,apple,orange,apple] => £2.05"
+      val resultPage = "[apple,apple,orange,apple] => £1.45"
       POS.checkout(cartPage) shouldBe resultPage
     }
   }
